@@ -1,0 +1,13 @@
+pipeline{
+    agent any
+    parameters{
+        choice(choices: ['master', 'dev', 'test', 'prod', 'feature'], name: 'BRANCHNAME')
+    }
+    stages{
+        stage('checkout'){
+            steps{
+                git branch:'${BRANCHNAME}',url:'https://github.com/Neelaveni0620/webproject.git'
+            }
+        }
+    }
+}
